@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Alert, Button, FlatList, Text, TextInput, View } from "react-native";
-import { UserRepository } from "../../repositories/user.repository";
+import { UserRepository } from "../../../repositories/user.repository";
 
 export default function UsersScreen() {
   const [users, setUsers] = useState([]);

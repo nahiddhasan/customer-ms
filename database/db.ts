@@ -1,19 +1,6 @@
-import * as SQLite from 'expo-sqlite';
+import * as SQLite from "expo-sqlite";
 
-export const db = SQLite.openDatabaseSync('app.db');
-
-// export const initDB = () => {
-//   db.execSync(`
-//     PRAGMA journal_mode = WAL;
-
-//     CREATE TABLE IF NOT EXISTS users (
-//       id INTEGER PRIMARY KEY AUTOINCREMENT,
-//       name TEXT NOT NULL,
-//       email TEXT UNIQUE NOT NULL,
-//       createdAt TEXT DEFAULT CURRENT_TIMESTAMP
-//     );
-//   `);
-// };
+export const db = SQLite.openDatabaseSync("app.db");
 
 export const initDB = () => {
   db.execSync(`
