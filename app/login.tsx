@@ -11,7 +11,7 @@ export default function Login() {
   const handleLogin = async () => {
     try {
       await AuthService.login(email, password);
-      router.replace("/(tabs)/users");
+      router.replace("/(root)/(tabs)/home");
     } catch (error: any) {
       Alert.alert("Login Failed", error.message);
     }

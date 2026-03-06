@@ -1,13 +1,13 @@
+import { CustomerRepository } from "@/repositories/customer.repository";
 import { useState } from "react";
 import {
-    Alert,
-    Pressable,
-    ScrollView,
-    Text,
-    TextInput,
-    View,
+  Alert,
+  Pressable,
+  ScrollView,
+  Text,
+  TextInput,
+  View,
 } from "react-native";
-import { CustomerRepository } from "../../../repositories/customer.repository";
 
 export default function CreateCustomer() {
   const sessionId = 1; // get from session context later

@@ -23,7 +23,7 @@ export default function RootLayout() {
       initDB();
 
       const user = await AuthService.getCurrentUser();
-      const inAuthGroup = segments[0] === "(tabs)";
+      const inAuthGroup = segments[0] === "(root)";
 
       if (!user && inAuthGroup) {
         router.replace("/login");
@@ -46,7 +46,7 @@ export default function RootLayout() {
       <Stack screenOptions={{ headerShown: false }}>
         <Stack.Screen name="login" />
         <Stack.Screen name="register" />
-        <Stack.Screen name="(tabs)" />
+        <Stack.Screen name="(root)" />
       </Stack>
       <StatusBar style="auto" />
     </ThemeProvider>
