@@ -2,11 +2,14 @@ import { v4 as uuidv4 } from "uuid";
 import { db } from "../database/db";
 
 export const SessionRepository = {
-  async create(userId: number, data: {
-    session_name: string;
-    session_year: number;
-    is_current?: number;
-  }) {
+  async create(
+    userId: number,
+    data: {
+      session_name: string;
+      session_year: number;
+      is_current?: number;
+    },
+  ) {
     const uuid = uuidv4();
 
     await db.runAsync(
@@ -18,8 +21,8 @@ export const SessionRepository = {
         userId,
         data.session_name,
         data.session_year,
-        data.is_current ?? 0
-      ]
+        data.is_current ?? 0,
+      ],
     );
 
     return uuid;
@@ -29,7 +32,16 @@ export const SessionRepository = {
     return db.getAllAsync(
       `SELECT * FROM sessions 
        WHERE user_id = ? AND is_deleted = 0`,
-      [userId]
+      [userId],
     );
-  }
+  },
+
+  async getCurrent(userId: number) {
+    return db.getFirstAsync(
+      `SELECT * FROM sessions
+       WHERE user_id = ? AND is_current = 1 AND is_deleted = 0
+       LIMIT 1`,
+      [userId],
+    );
+  },
 };

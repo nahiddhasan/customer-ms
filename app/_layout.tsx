@@ -30,7 +30,7 @@ export default function RootLayout() {
       }
 
       if (user && !inAuthGroup) {
-        router.replace("/(tabs)");
+        router.replace("/(root)/(tabs)/home");
       }
 
       setIsReady(true);

@@ -16,23 +16,18 @@ export const AuthService = {
 
     const hashed = await Crypto.digestStringAsync(
       Crypto.CryptoDigestAlgorithm.SHA256,
-      password
+      password,
     );
 
-    if (hashed !== user.password)
-      throw new Error("Invalid password");
+    if (hashed !== user.password) throw new Error("Invalid password");
 
     await AsyncStorage.setItem("user", JSON.stringify(user));
 
     return user;
   },
 
-  async logout() {
-    await AsyncStorage.removeItem("user");
-  },
-
   async getCurrentUser() {
     const user = await AsyncStorage.getItem("user");
     return user ? JSON.parse(user) : null;
-  }
+  },
 };

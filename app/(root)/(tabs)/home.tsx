@@ -1,8 +1,9 @@
 import { Image } from "expo-image";
-import { StyleSheet, Text } from "react-native";
+import { Pressable, StyleSheet, Text } from "react-native";
 
 import ParallaxScrollView from "@/components/parallax-scroll-view";
 import { ThemedView } from "@/components/themed-view";
+import { router } from "expo-router";
 
 export default function HomeScreen() {
   return (
@@ -15,6 +16,9 @@ export default function HomeScreen() {
         />
       }
     >
+      <Pressable onPress={() => router.push("/sessions/create")}>
+        <Text className="text-blue-500">Create Session</Text>
+      </Pressable>
       <ThemedView style={styles.titleContainer}>
         <Text className="text-red-500">Hello</Text>
       </ThemedView>

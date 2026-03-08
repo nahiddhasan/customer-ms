@@ -1,6 +1,9 @@
 import { useRouter } from "expo-router";
 import React, { useState } from "react";
 import { Alert, Button, TextInput, View } from "react-native";
+import {
+  SafeAreaView
+} from "react-native-safe-area-context";
 import { AuthService } from "../services/auth.service";
 
 export default function Login() {
@@ -18,24 +21,29 @@ export default function Login() {
   };
 
   return (
-    <View style={{ padding: 20 }}>
-      <TextInput
-        placeholder="Email"
-        value={email}
-        onChangeText={setEmail}
-        style={{ borderWidth: 1, marginBottom: 10, padding: 8 }}
-      />
+    <SafeAreaView className="flex items-center justify-center">
+      <View style={{ padding: 20 }}>
+        <TextInput
+          placeholder="Email"
+          value={email}
+          onChangeText={setEmail}
+          style={{ borderWidth: 1, marginBottom: 10, padding: 8 }}
+        />
 
-      <TextInput
-        placeholder="Password"
-        secureTextEntry
-        value={password}
-        onChangeText={setPassword}
-        style={{ borderWidth: 1, marginBottom: 10, padding: 8 }}
-      />
+        <TextInput
+          placeholder="Password"
+          secureTextEntry
+          value={password}
+          onChangeText={setPassword}
+          style={{ borderWidth: 1, marginBottom: 10, padding: 8 }}
+        />
 
-      <Button title="Login" onPress={handleLogin} />
-      <Button title="Go to Register" onPress={() => router.push("/register")} />
-    </View>
+        <Button title="Login" onPress={handleLogin} />
+        <Button
+          title="Go to Register"
+          onPress={() => router.push("/register")}
+        />
+      </View>
+    </SafeAreaView>
   );
 }
