@@ -1,4 +1,5 @@
 import { CustomerRepository } from "@/repositories/customer.repository";
+import { useSessionStore } from "@/stores/session.store";
 import { useState } from "react";
 import {
   Alert,
@@ -10,7 +11,7 @@ import {
 } from "react-native";
 
 export default function CreateCustomer() {
-  const sessionId = 1; // get from session context later
+  const session = useSessionStore((s) => s.currentSession);
 
   const [form, setForm] = useState({
     customer_name: "",
@@ -33,7 +34,7 @@ export default function CreateCustomer() {
     }
 
     try {
-      await CustomerRepository.create(sessionId, {
+      await CustomerRepository.create(session.id, {
         ...form,
         total_land: Number(form.total_land) || 0,
         total_cost: Number(form.total_cost) || 0,

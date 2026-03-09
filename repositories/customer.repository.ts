@@ -19,8 +19,8 @@ export const CustomerRepository = {
         data.image,
         data.total_land,
         data.total_cost,
-        data.paid
-      ]
+        data.paid,
+      ],
     );
 
     return uuid;
@@ -31,7 +31,15 @@ export const CustomerRepository = {
       `SELECT *, (total_cost - paid) as due
        FROM customers
        WHERE session_id = ? AND is_deleted = 0`,
-      [sessionId]
+      [sessionId],
     );
-  }
+  },
+  async getCustomerBySession(sessionId: number) {
+    return db.getAllAsync(
+      `SELECT *, (total_cost - paid) as due
+       FROM customers
+       WHERE session_id = ? AND is_deleted = 0`,
+      [sessionId],
+    );
+  },
 };

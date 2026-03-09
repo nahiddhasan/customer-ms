@@ -16,7 +16,7 @@ export default function HomeScreen() {
         />
       }
     >
-      <Pressable onPress={() => router.push("/sessions/create")}>
+      <Pressable onPress={() => router.push("/sessions/create-session")}>
         <Text className="text-blue-500">Create Session</Text>
       </Pressable>
       <ThemedView style={styles.titleContainer}>
